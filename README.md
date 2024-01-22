@@ -18,3 +18,6 @@
     -Last 10 tweets from user
 
 -Pagination on tweets
+-user auth
+
+-Every tweet might be having a hashtag
