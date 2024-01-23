@@ -13,13 +13,11 @@ app.listen(PORT, async() => {
     console.log(`Server Started on ${PORT}`)
     await connect();
     console.log('Mongodb is connected!')
-    // const tweet = await Tweet.create({
-    //     content : "This is my third tweet",
 
-    // })
-    const TweetRepo = new TweetRepository();
-    const tweet =  await TweetRepo.getAll(2, 4);
-    // console.log(tweet[0]);
+    const tweets = await Tweet.find({
+        content : ["This is my first tweet", "This is my second tweet", "fsgb123"]
+    })
+    // console.log(tweets);
 });
 
 
