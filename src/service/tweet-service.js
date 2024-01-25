@@ -10,9 +10,11 @@ class TweetService {
 
 
     async create(data) {
-
+        try {
             const content = data.content;
-            const tags  = content.match(/#[a-zA-Z0-9_]+/g).map((tag) => tag.substring(1));
+            const tags  = content.match(/#[a-zA-Z0-9_]+/g)
+            .map((tag) => tag.substring(1))
+            .map((tag) => tag.toLocaleLowerCase());
             const tweet = await this.tweetRepository.create(data);
             let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
             let titleOfPresenttags =  alreadyPresentTags.map(tags => tags.title)
@@ -29,6 +31,10 @@ class TweetService {
                 tag.save();
             })
             return tweet;
+        } catch (error) {
+            console.log(error);
+            console.log("This is error in service layer");
+        }
     }
 }
 
