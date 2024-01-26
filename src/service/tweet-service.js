@@ -5,8 +5,7 @@ class TweetService {
     constructor() {
         this.tweetRepository = new TweetRepository();
         this.hashtagRepository = new  HashtagRepository();
-        
-    }
+}
 
 
     async create(data) {
@@ -23,7 +22,7 @@ class TweetService {
                     title : tag,
                     tweets  : [tweet.id]
                 }
-            }) 
+            })
             await this.hashtagRepository.bulkcreate(newTags);
             alreadyPresentTags.forEach((tag) => {
                 tag.tweets.push(tweet.id);

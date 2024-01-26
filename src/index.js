@@ -11,7 +11,7 @@ const TweetService = require("./service/tweet-service");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : true}))
+app.use(bodyParser.urlencoded({ extended : true }))
 
 app.use("/api", apiRoutes);
 app.listen(PORT, async() => {
