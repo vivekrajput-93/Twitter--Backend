@@ -4,11 +4,13 @@ const connect = require("./config/database")
 
 const app = express();
 const apiRoutes = require("./routes/index");
-const Tweet = require("./models/tweet");
-const HashtagRepository = require("./repository/hashtag-repo")
-const Comment = require("./models/comment")
-const TweetService = require("./service/tweet-service");
 const bodyParser = require("body-parser");
+
+const {UserRepository,TweetRepository} = require("./repository/index");
+const LikeService = require("./service/like-service");
+
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }))
@@ -19,6 +21,7 @@ app.listen(PORT, async() => {
     await connect();
     console.log('Mongodb is connected!')
 
+    
 });
 
 
