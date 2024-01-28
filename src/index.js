@@ -1,13 +1,15 @@
 const express = require("express");
 const { PORT } = require("./config/ServerConfig");
 const connect = require("./config/database")
+const {passportAuth} = require("./config/jwt-middleware")
 
 const app = express();
 const apiRoutes = require("./routes/index");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
-const {UserRepository,TweetRepository} = require("./repository/index");
-const LikeService = require("./service/like-service");
+app.use(passport.initialize());
+passportAuth(passport);
 
 
 
