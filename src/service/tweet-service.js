@@ -34,6 +34,12 @@ class TweetService {
             console.log("This is error in service layer");
         }
     }
+
+    async get(tweetId) {
+        const tweet = await this.tweetRepository.getWithComments(tweetId);
+        return tweet;
+    }
+
 }
 
 module.exports = TweetService;
